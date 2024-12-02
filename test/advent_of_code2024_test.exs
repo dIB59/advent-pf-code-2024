@@ -63,6 +63,7 @@ defmodule AdventOfCode2024Test do
   end
 
   test "main" do
-    IO.inspect(DayOne.main())
+    x = DayOne.main()
+    IO.inspect(x)
   end
 end

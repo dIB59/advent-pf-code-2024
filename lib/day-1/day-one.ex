@@ -3,22 +3,28 @@ defmodule DayOne do
     number_list = parse_content("/Users/ibrahim/Github/advent-pf-code-2024/input_day_1.txt")
     {first_numbers, second_numbers} = accumulate(number_list)
 
-    Enum.sort(first_numbers)
-    Enum.sort(second_numbers)
+    first_numbers = Enum.sort(first_numbers)
+    second_numbers = Enum.sort(second_numbers)
 
     distance_list = distance(first_numbers, second_numbers)
     Enum.sum(distance_list)
   end
 
-  def accumulate(list) do
-    first_numbers = Enum.map(list, fn [first, _] -> first end)
-    second_numbers = Enum.map(list, fn [_, second] -> second end)
+  def accumulate(valid_list) do
+    first_numbers =
+      Enum.map(valid_list, fn
+        [first, _] -> first
+      end)
+
+    second_numbers =
+      Enum.map(valid_list, fn
+        [_, second] -> second
+      end)
+
     {first_numbers, second_numbers}
   end
 
   def distance(list_num1, list_num2) do
-    IO.inspect()
-
     Enum.zip(list_num1, list_num2)
     |> Enum.map(&abs(elem(&1, 0) - elem(&1, 1)))
   end
@@ -34,10 +40,9 @@ defmodule DayOne do
           line
           |> Enum.map(&String.trim/1)
           |> Enum.map(&parse_integer/1)
+          |> Enum.reject(fn x -> x == {:error, :invalid_integer} end)
         end)
-
-      {:error, reason} ->
-        {:error, reason}
+        |> Enum.reject(&Enum.empty?/1)
     end
   end
 
