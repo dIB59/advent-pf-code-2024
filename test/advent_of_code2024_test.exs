@@ -1,8 +1,9 @@
 defmodule AdventOfCode2024Test do
   use ExUnit.Case
+  doctest DayOne
   doctest AdventOfCode2024
 
-  test "greets the world" do
-    assert AdventOfCode2024.hello() == :world
+  test "prints the file" do
+    DayOne.print_file_content()
   end
 end
