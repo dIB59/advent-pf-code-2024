@@ -5,8 +5,7 @@ defmodule AdventOfCode2024Test do
 
   test "parses file content" do
     result = DayOne.parse_content("/Users/ibrahim/Github/advent-pf-code-2024/input_day_1.txt")
-    IO.inspect(result)
-    # Expected numbers to assert against
+
     expected_numbers = [
       [53906, 14872],
       [35867, 86182],
@@ -20,5 +19,21 @@ defmodule AdventOfCode2024Test do
 
     # Assert that the result matches the expected structure
     assert Enum.all?(flat_expected, fn number -> number in flat_result end)
+  end
+
+  test "calculate distace" do
+    numbers = [
+      [53906, 14872],
+      [35867, 86182],
+      [61313, 43656],
+      [23620, 85315],
+      [96434, 90834]
+    ]
+
+    expected_distance = [39034, -50315, 17657, -61695, 5600]
+
+    res = DayOne.distance(numbers)
+
+    assert res == expected_distance
   end
 end
