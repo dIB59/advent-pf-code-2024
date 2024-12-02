@@ -30,7 +30,7 @@ defmodule AdventOfCode2024Test do
       [96434, 90834]
     ]
 
-    expected_distance = [39034, -50315, 17657, -61695, 5600]
+    expected_distance = [39034, 50315, 17657, 61695, 5600]
 
     res = DayOne.distance(numbers)
 

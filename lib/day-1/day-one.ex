@@ -7,7 +7,7 @@ defmodule DayOne do
 
   def distance(list_num) do
     for [first_num, second_num] <- list_num do
-      first_num - second_num
+      abs(first_num - second_num)
     end
   end
 
