@@ -1,13 +1,27 @@
 defmodule DayOne do
-  def print_file_content do
-    case File.read("input_day_1.txt") do
-      {:ok, content} -> IO.puts(content)
-      {:error, reason} -> IO.puts("Error: #{reason}")
-    end
+  @spec parse_content(String.t()) :: {:ok, binary()} | {:error, File.posix()}
+  def parse_content(file_path) do
+    case File.read(file_path) do
+      {:ok, content} ->
+        content
+        |> String.split("\n")
+        |> Enum.map(&String.split(&1, "   "))
+        |> Enum.map(fn line ->
+          line
+          |> Enum.map(&String.trim/1)
+          |> Enum.map(&parse_integer/1)
+        end)
 
-    case File.cwd() do
-      {:ok, path} -> IO.puts("Current path: #{path}")
-      {:error, reason} -> IO.puts("Error: #{reason}")
+      {:error, reason} ->
+        {:error, reason}
+    end
+  end
+
+  defp parse_integer(string) do
+    with {num, ""} <- Integer.parse(string) do
+      num
+    else
+      _ -> {:error, :invalid_integer}
     end
   end
 end
