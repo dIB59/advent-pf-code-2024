@@ -1,14 +1,26 @@
 defmodule DayOne do
   def main do
-    content = parse_content("/Users/ibrahim/Github/advent-pf-code-2024/input_day_1.txt")
-    distance_list = distance(content)
-    IO.inspect(distance_list)
+    number_list = parse_content("/Users/ibrahim/Github/advent-pf-code-2024/input_day_1.txt")
+    {first_numbers, second_numbers} = accumulate(number_list)
+
+    Enum.sort(first_numbers)
+    Enum.sort(second_numbers)
+
+    distance_list = distance(first_numbers, second_numbers)
+    Enum.sum(distance_list)
   end
 
-  def distance(list_num) do
-    for [first_num, second_num] <- list_num do
-      abs(first_num - second_num)
-    end
+  def accumulate(list) do
+    first_numbers = Enum.map(list, fn [first, _] -> first end)
+    second_numbers = Enum.map(list, fn [_, second] -> second end)
+    {first_numbers, second_numbers}
+  end
+
+  def distance(list_num1, list_num2) do
+    IO.inspect()
+
+    Enum.zip(list_num1, list_num2)
+    |> Enum.map(&abs(elem(&1, 0) - elem(&1, 1)))
   end
 
   @spec parse_content(String.t()) :: {:ok, binary()} | {:error, File.posix()}

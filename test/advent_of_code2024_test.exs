@@ -22,6 +22,30 @@ defmodule AdventOfCode2024Test do
   end
 
   test "calculate distace" do
+    numbers1 = [
+      14872,
+      86182,
+      43656,
+      85315,
+      90834
+    ]
+
+    numbers2 = [
+      53906,
+      35867,
+      61313,
+      23620,
+      96434
+    ]
+
+    expected_distance = [39034, 50315, 17657, 61695, 5600]
+
+    res = DayOne.distance(numbers1, numbers2)
+
+    assert res == expected_distance
+  end
+
+  test "accumalate" do
     numbers = [
       [53906, 14872],
       [35867, 86182],
@@ -30,10 +54,15 @@ defmodule AdventOfCode2024Test do
       [96434, 90834]
     ]
 
-    expected_distance = [39034, 50315, 17657, 61695, 5600]
+    numbers1 = [14872, 86182, 43656, 85315, 90834]
+    numbers2 = [53906, 35867, 61313, 23620, 96434]
 
-    res = DayOne.distance(numbers)
+    res = DayOne.accumulate(numbers)
 
-    assert res == expected_distance
+    assert res == {numbers2, numbers1}
+  end
+
+  test "main" do
+    IO.inspect(DayOne.main())
   end
 end
