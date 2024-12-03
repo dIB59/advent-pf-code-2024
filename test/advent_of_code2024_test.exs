@@ -4,7 +4,8 @@ defmodule AdventOfCode2024Test do
   doctest AdventOfCode2024
 
   test "parses file content" do
-    result = DayOne.parse_content("/Users/ibrahim/Github/advent-pf-code-2024/input_day_1.txt")
+    result =
+      DayOne.parse_content("/Users/ibrahim/Github/advent-pf-code-2024/asset/input_day_1.txt")
 
     expected_numbers = [
       [53906, 14872],

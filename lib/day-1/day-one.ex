@@ -1,7 +1,7 @@
 defmodule DayOne do
   def main do
     {first_numbers, second_numbers} =
-      "/Users/ibrahim/Github/advent-pf-code-2024/input_day_1.txt"
+      "/Users/ibrahim/Github/advent-pf-code-2024/asset/input_day_1.txt"
       |> parse_content()
       |> accumulate()
 
@@ -14,7 +14,7 @@ defmodule DayOne do
 
   def similarity do
     {first_numbers, second_numbers} =
-      "/Users/ibrahim/Github/advent-pf-code-2024/input_day_1.txt"
+      "/Users/ibrahim/Github/advent-pf-code-2024/asset/input_day_1.txt"
       |> parse_content()
       |> accumulate()
 
