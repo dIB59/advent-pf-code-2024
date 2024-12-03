@@ -1,4 +1,4 @@
-defmodule AdventOfCode2024Test do
+defmodule DayOneTest do
   use ExUnit.Case
   doctest DayOne
   doctest AdventOfCode2024
