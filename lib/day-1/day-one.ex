@@ -1,7 +1,9 @@
 defmodule DayOne do
   def main do
-    number_list = parse_content("/Users/ibrahim/Github/advent-pf-code-2024/input_day_1.txt")
-    {first_numbers, second_numbers} = accumulate(number_list)
+    {first_numbers, second_numbers} =
+      "/Users/ibrahim/Github/advent-pf-code-2024/input_day_1.txt"
+      |> parse_content()
+      |> accumulate()
 
     first_numbers = Enum.sort(first_numbers)
     second_numbers = Enum.sort(second_numbers)
