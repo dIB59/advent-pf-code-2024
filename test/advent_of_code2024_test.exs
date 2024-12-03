@@ -64,11 +64,11 @@ defmodule AdventOfCode2024Test do
 
   test "main" do
     x = DayOne.main()
-    IO.inspect(x)
+    assert x == 1_873_376
   end
 
   test "similarity" do
     x = DayOne.similarity()
-    IO.inspect(x)
+    assert x == 18_997_088
   end
 end
