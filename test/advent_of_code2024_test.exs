@@ -66,4 +66,9 @@ defmodule AdventOfCode2024Test do
     x = DayOne.main()
     IO.inspect(x)
   end
+
+  test "similarity" do
+    x = DayOne.similarity()
+    IO.inspect(x)
+  end
 end

@@ -10,6 +10,21 @@ defmodule DayOne do
     Enum.sum(distance_list)
   end
 
+  def similarity do
+    number_list = parse_content("/Users/ibrahim/Github/advent-pf-code-2024/input_day_1.txt")
+    {first_numbers, second_numbers} = accumulate(number_list)
+
+    first_numbers = Enum.sort(first_numbers)
+    second_numbers = Enum.sort(second_numbers)
+
+    frequencies = Enum.frequencies(second_numbers)
+
+    Enum.map(first_numbers, fn number ->
+      {number, Map.get(frequencies, number, 0)}
+    end)
+    |> Enum.reduce(0, fn {num, freq}, acc -> acc + num * freq end)
+  end
+
   def accumulate(valid_list) do
     first_numbers =
       Enum.map(valid_list, fn
